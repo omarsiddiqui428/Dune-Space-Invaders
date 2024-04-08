@@ -18,15 +18,23 @@ paul = pygame.image.load('/Users/omarsiddiqui/Desktop/player.png') #paul to the 
 paul_rect = paul.get_rect() # Creates a rectanlge as a bounding box or representation of where the image is located and how large it is.
 # This container helps you manage position, size, and movement of the image on screen
 # You need rect for every object that you need to manage the position, size, and collision of
+feyd = pygame.image.load('/Users/omarsiddiqui/Desktop/feyd.png')
+feyd_rect = feyd.get_rect()
 
-run = True
-while run:
+run = True #setting it initially to True so that False will end the game
+while run: #this is the loop of the actual game
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
 
+    feyd_rect.x += .5 #want it to move back and forth, so it will move left when it gets to edge of screen
+    #check position?
+    #Do something where it then goes +- until it hits the left most side of the screen, then goes back to right
+    #do this for multiple feyds- could even do multiple characters
+    
 
-    userInput = pygame.key.get_pressed()
+
+    userInput = pygame.key.get_pressed() #adjust paul image movement based on player input
     if userInput[pygame.K_LEFT]:
         paul_rect.x -= vel
     if userInput[pygame.K_RIGHT]:
@@ -39,8 +47,10 @@ while run:
     # example of OOP: you created the object Paul, and now the attributes that someone made in the pygame library
     # for the created object can be used like x and y
 
-    screen.fill((0, 0, 0))  # Fill the screen with black
-    screen.blit(paul, paul_rect)  # Blit the image using its rectangle
-    pygame.display.update()
+    screen.fill((0, 0, 0))  # Fill the screen with black, basically updating the screen so new visuals can be displayed
+    screen.blit(paul, paul_rect)  # allows you to draw image onto another surface-"blit" = "block transfer"
+    # drawing image "paul" on the screen at the position and size defined by paul_rect
+    screen.blit(feyd,feyd_rect)
+    pygame.display.update() #reflects changes to the screen. Without this, you'd have to wait until you run the game again for the screen to fully update
 
 pygame.quit()
