@@ -37,13 +37,13 @@ while run:
 
     #Paul screen location + player key details
     paul_rect.y = 450
-    userInput = pygame.key.get_pressed() #adjust paul image movement based on player input
+    userInput = pygame.key.get_pressed()
     if userInput[pygame.K_LEFT] and paul_rect.x >= 0:
-        paul_rect.x -= paul_vel #TODO: make it not go out of bounds
-    if userInput[pygame.K_RIGHT] and paul_rect.x <= screen_width - paul_rect.width: #TODO: make it not go out of bounds
+        paul_rect.x -= paul_vel
+    if userInput[pygame.K_RIGHT] and paul_rect.x <= screen_width - paul_rect.width:
         paul_rect.x += paul_vel
 
-    #Feyd Rauthas' screen location + movement details
+    #Feyd Rauthas' screen location + movement details TODO: delete this comment, but these could be made into functions to make more efficient 
     feyd1_rect.y = 100
     feyd1_rect.x += feyd1_vel
     if feyd1_rect.x < (0 ) or feyd1_rect.x > (screen_width - feyd1_rect.width):
